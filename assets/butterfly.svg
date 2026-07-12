@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 132" role="img" aria-labelledby="title">
+  <title>Butterfly</title>
+  <defs>
+    <linearGradient id="wing-left" x1="19" x2="83" y1="10" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DFA87D"/>
+      <stop offset="1" stop-color="#B96945"/>
+    </linearGradient>
+    <linearGradient id="wing-right" x1="161" x2="97" y1="10" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0C8AB"/>
+      <stop offset="1" stop-color="#D17D58"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#wing-left)" d="M84 58C63 6 28 1 14 17 0 33 13 70 61 77 27 82 17 109 32 123c16 14 45-5 56-43l-4-22Z"/>
+  <path fill="url(#wing-right)" d="M96 58c21-52 56-57 70-41 14 16 1 53-47 60 34 5 44 32 29 46-16 14-45-5-56-43l4-22Z"/>
+  <path fill="#33483D" d="M88 45c2-8 2-17-2-27l5-2c3 8 4 16 3 24 3-8 8-15 15-20l4 4c-9 7-14 16-16 27 4 4 7 11 7 20 0 16-6 30-14 30S76 87 76 71c0-9 3-16 7-20-2-11-7-20-16-27l4-4c7 5 12 12 15 20-1-8 0-16 3-24l5 2c-4 10-4 19-2 27h-4Z"/>
+  <circle cx="69" cy="47" r="7" fill="#FFF6E8" opacity=".78"/>
+  <circle cx="111" cy="47" r="7" fill="#FFF6E8" opacity=".78"/>
+  <circle cx="53" cy="94" r="5" fill="#FFF6E8" opacity=".62"/>
+  <circle cx="127" cy="94" r="5" fill="#FFF6E8" opacity=".62"/>
+</svg>
