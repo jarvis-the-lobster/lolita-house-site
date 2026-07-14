@@ -1,6 +1,6 @@
 # Lolita House website
 
-Simple static website for Lolita House, a Level 2 sober living home for women in Fairfield, CA.
+Simple static website for Lolita House, a sober living home for women in Fairfield, CA.
 
 ## Preview locally
 
@@ -15,6 +15,7 @@ Then visit `http://localhost:8080`.
 ## Before publishing
 
 - Replace the placeholder phone number and email in `index.html`.
+- Confirm the inquiry form destination email and submit once after publishing to activate FormSubmit.
 - Add the exact mission statement if it differs from the draft copy.
 - Replace or expand the house rules highlights from the official house rules attachment.
 - Add real home photos to the Photos section when available.

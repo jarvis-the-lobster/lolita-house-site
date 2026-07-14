@@ -6,12 +6,12 @@
     <title>Lolita House | Sober Living for Women in Fairfield, CA</title>
     <meta
       name="description"
-      content="Lolita House is a Level 2 sober living home for women in Fairfield, CA, offering shared and private room options in a supportive, accountable environment."
+      content="Lolita House is a sober living home for women in Fairfield, CA, offering shared and private room options in a supportive, accountable environment."
     />
     <meta property="og:title" content="Lolita House" />
     <meta
       property="og:description"
-      content="Level 2 sober living for women in Fairfield, CA. Call or email to learn about availability and intake."
+      content="Sober living for women in Fairfield, CA. Call, email, or send a simple inquiry to learn about availability."
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="assets/welcome-porch.png" />
@@ -42,14 +42,14 @@
         </div>
         <div class="hero-content">
           <img class="hero-butterfly" src="assets/butterfly.svg" alt="" aria-hidden="true" />
-          <p class="eyebrow">Level 2 sober living for women</p>
+          <p class="eyebrow">Sober living home for women</p>
           <h1 id="hero-title">A steady place to continue recovery in Fairfield.</h1>
           <p class="hero-copy">
             Lolita House offers a sober, accountable home environment for women,
             close to restaurants, a convenience store, and bus routes.
           </p>
           <div class="hero-actions" aria-label="Contact actions">
-            <a class="button primary" href="#contact">Start Intake</a>
+            <a class="button primary" href="#intake">Start Intake</a>
             <a class="button secondary" href="#contact">Call Lolita House</a>
           </div>
         </div>
@@ -81,7 +81,7 @@
           <div class="feature-grid" aria-label="Home highlights">
             <article class="feature-card">
               <span class="feature-number">01</span>
-              <h3>Level 2 support</h3>
+              <h3>Supportive home</h3>
               <p>Clear expectations, shared responsibility, and a recovery-focused home setting.</p>
             </article>
             <article class="feature-card">
@@ -102,20 +102,72 @@
         <div class="section-inner split intake-layout">
           <div>
             <p class="eyebrow">Intake</p>
-            <h2 id="intake-title">A simple call starts the process.</h2>
+            <h2 id="intake-title">A simple inquiry starts the process.</h2>
             <p>
-              To protect privacy, intake details are handled by phone or email
-              instead of through a public form.
+              Use the form for general availability questions only. Personal
+              details can be discussed privately by phone or email.
             </p>
+            <form
+              class="inquiry-form"
+              action="https://formsubmit.co/cieloproperties.sandra@gmail.com"
+              method="POST"
+            >
+              <input type="hidden" name="_subject" value="Lolita House inquiry" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <div class="form-grid">
+                <label>
+                  Name
+                  <input name="name" type="text" autocomplete="name" required />
+                </label>
+                <label>
+                  Best contact
+                  <input name="contact" type="text" autocomplete="email tel" required />
+                </label>
+                <label>
+                  Preferred contact
+                  <select name="preferred_contact" required>
+                    <option value="">Select one</option>
+                    <option>Phone</option>
+                    <option>Email</option>
+                    <option>Text</option>
+                  </select>
+                </label>
+                <label>
+                  Looking for
+                  <select name="room_interest" required>
+                    <option value="">Select one</option>
+                    <option>Current availability</option>
+                    <option>Shared room information</option>
+                    <option>Private room information</option>
+                    <option>General questions</option>
+                  </select>
+                </label>
+              </div>
+              <label>
+                Message
+                <textarea
+                  name="message"
+                  rows="5"
+                  maxlength="900"
+                  placeholder="Please keep this to general questions about availability, rooms, pricing, or scheduling."
+                ></textarea>
+              </label>
+              <p class="form-note">
+                Please do not include medical history, legal details, financial records,
+                or other sensitive personal information in this form.
+              </p>
+              <button class="button primary" type="submit">Send Inquiry</button>
+            </form>
           </div>
           <ol class="steps">
             <li>
               <strong>Reach out</strong>
-              <span>Call or email to ask about current availability.</span>
+              <span>Call, email, or send a simple inquiry about current availability.</span>
             </li>
             <li>
               <strong>Talk through fit</strong>
-              <span>Discuss recovery needs, expectations, and next steps.</span>
+              <span>Discuss house expectations, room options, and next steps.</span>
             </li>
             <li>
               <strong>Review details</strong>
@@ -184,7 +236,7 @@
           </div>
           <address class="contact-card">
             <a href="tel:+1-000-000-0000">(000) 000-0000</a>
-            <a href="mailto:hello@example.com">hello@example.com</a>
+            <a href="mailto:cieloproperties.sandra@gmail.com">cieloproperties.sandra@gmail.com</a>
             <span>Fairfield, California</span>
           </address>
         </div>

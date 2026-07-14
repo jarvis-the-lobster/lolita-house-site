@@ -333,6 +333,66 @@ h3 {
   align-items: center;
 }
 
+.inquiry-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.inquiry-form label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.inquiry-form input,
+.inquiry-form select,
+.inquiry-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.78rem 0.85rem;
+}
+
+.inquiry-form input:focus,
+.inquiry-form select:focus,
+.inquiry-form textarea:focus {
+  border-color: var(--sage);
+  outline: 3px solid rgba(98, 120, 106, 0.2);
+}
+
+.inquiry-form textarea {
+  resize: vertical;
+}
+
+.inquiry-form input[name="_honey"] {
+  position: absolute;
+  left: -100vw;
+}
+
+.form-note {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.inquiry-form .button {
+  justify-self: start;
+  cursor: pointer;
+}
+
 .steps {
   display: grid;
   gap: 0.9rem;
@@ -534,7 +594,8 @@ h3 {
   }
 
   .feature-grid,
-  .rules-list {
+  .rules-list,
+  .form-grid {
     grid-template-columns: 1fr;
   }
 }
