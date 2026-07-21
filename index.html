@@ -16,7 +16,6 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="assets/welcome-porch.png" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -50,7 +49,14 @@
             going through their recovery journey.
           </p>
           <div class="hero-actions" aria-label="Contact actions">
-            <a class="button primary" href="#intake">Start Intake</a>
+            <a
+              class="button primary"
+              href="https://form.jotform.com/262008413568052"
+              target="_blank"
+              rel="noopener"
+            >
+              Start Intake
+            </a>
             <a class="button secondary" href="#contact">Call Lolita House</a>
           </div>
         </div>
@@ -97,108 +103,17 @@
             <p class="eyebrow">Intake</p>
             <h2 id="intake-title">Start with a private pre-intake form.</h2>
             <p>
-              Share basic contact, timing, and room preference details. Sensitive
-              information can be handled privately by phone or during the full intake.
+              Share contact, timing, and room preference details through the
+              Lolita House intake form. The form opens securely in a new tab.
             </p>
-            <form
-              id="pre-intake-form"
-              class="inquiry-form"
-              action="https://formsubmit.co/jarvis.bumann@gmail.com"
-              method="POST"
-              enctype="multipart/form-data"
+            <a
+              class="button primary intake-button"
+              href="https://form.jotform.com/262008413568052"
+              target="_blank"
+              rel="noopener"
             >
-              <input type="hidden" name="_subject" value="Lolita House pre-intake form" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="pdf_status" value="PDF attachment will be generated before submit." />
-              <input id="generated-pdf" type="file" name="pre_intake_pdf" hidden />
-              <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
-              <div class="form-grid">
-                <label>
-                  First name
-                  <input name="first_name" type="text" autocomplete="given-name" required />
-                </label>
-                <label>
-                  Last name
-                  <input name="last_name" type="text" autocomplete="family-name" required />
-                </label>
-                <label>
-                  Phone
-                  <input name="phone" type="tel" autocomplete="tel" required />
-                </label>
-                <label>
-                  Email
-                  <input name="email" type="email" autocomplete="email" required />
-                </label>
-                <label>
-                  Preferred contact
-                  <select name="preferred_contact" required>
-                    <option value="">Select one</option>
-                    <option>Phone</option>
-                    <option>Email</option>
-                    <option>Text</option>
-                  </select>
-                </label>
-                <label>
-                  Best time to reach you
-                  <input name="best_time" type="text" autocomplete="off" placeholder="Morning, afternoon, evening..." />
-                </label>
-                <label>
-                  Room interest
-                  <select name="room_interest">
-                    <option value="">Select one</option>
-                    <option>Current availability</option>
-                    <option>Shared room</option>
-                    <option>Private room</option>
-                    <option>Either shared or private</option>
-                    <option>General questions</option>
-                  </select>
-                </label>
-                <label>
-                  Preferred move-in timing
-                  <input name="move_in_timing" type="text" autocomplete="off" placeholder="Soon, 30 days, flexible..." />
-                </label>
-              </div>
-              <fieldset class="checkbox-group">
-                <legend>What would you like to discuss?</legend>
-                <label>
-                  <input type="checkbox" name="topics" value="Availability" />
-                  Availability
-                </label>
-                <label>
-                  <input type="checkbox" name="topics" value="Room options" />
-                  Room options
-                </label>
-                <label>
-                  <input type="checkbox" name="topics" value="Pricing" />
-                  Pricing
-                </label>
-                <label>
-                  <input type="checkbox" name="topics" value="House expectations" />
-                  House expectations
-                </label>
-              </fieldset>
-              <label>
-                General notes
-                <textarea
-                  name="message"
-                  rows="5"
-                  maxlength="900"
-                  placeholder="Share general questions, scheduling notes, or room preferences. Please do not include medical, legal, financial, or ID information."
-                ></textarea>
-              </label>
-              <label class="consent-check">
-                <input type="checkbox" name="sensitive_info_acknowledgement" value="Acknowledged" required />
-                I understand this form is for general pre-intake information only and should not include sensitive personal details.
-              </label>
-              <div class="form-actions">
-                <button class="button primary" type="submit">Send Pre-Intake PDF</button>
-                <span id="form-status" class="form-status" role="status" aria-live="polite"></span>
-              </div>
-              <p class="form-note">
-                A PDF copy of these answers is created in your browser and emailed to Lolita House.
-              </p>
-            </form>
+              Open Intake Form
+            </a>
           </div>
           <ol class="steps">
             <li>
@@ -314,151 +229,6 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
-
-      const intakeForm = document.getElementById("pre-intake-form");
-      const pdfInput = document.getElementById("generated-pdf");
-      const formStatus = document.getElementById("form-status");
-
-      const getFormValue = (formData, key) => String(formData.get(key) || "").trim();
-
-      const writeWrappedLine = (doc, label, value, x, y, width) => {
-        const cleanValue = value || "Not provided";
-        doc.setFont("helvetica", "bold");
-        doc.text(`${label}:`, x, y);
-        doc.setFont("helvetica", "normal");
-
-        const lines = doc.splitTextToSize(cleanValue, width);
-        doc.text(lines, x, y + 14);
-        return y + 18 + lines.length * 12;
-      };
-
-      const buildPreIntakePdf = (formData) => {
-        const { jsPDF } = window.jspdf || {};
-        if (!jsPDF) {
-          throw new Error("PDF library did not load.");
-        }
-
-        const doc = new jsPDF({ unit: "pt", format: "letter" });
-        const margin = 54;
-        const pageWidth = doc.internal.pageSize.getWidth();
-        const pageHeight = doc.internal.pageSize.getHeight();
-        const contentWidth = pageWidth - margin * 2;
-        let y = margin;
-
-        const ensureSpace = (height = 72) => {
-          if (y + height > pageHeight - margin) {
-            doc.addPage();
-            y = margin;
-          }
-        };
-
-        const section = (title) => {
-          ensureSpace(52);
-          doc.setFont("helvetica", "bold");
-          doc.setFontSize(13);
-          doc.setTextColor(51, 72, 61);
-          doc.text(title, margin, y);
-          y += 19;
-          doc.setDrawColor(222, 216, 205);
-          doc.line(margin, y, pageWidth - margin, y);
-          y += 20;
-          doc.setTextColor(35, 33, 31);
-          doc.setFontSize(10);
-        };
-
-        const field = (label, key) => {
-          ensureSpace(74);
-          y = writeWrappedLine(doc, label, getFormValue(formData, key), margin, y, contentWidth);
-        };
-
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(20);
-        doc.setTextColor(35, 33, 31);
-        doc.text("Lolita House Pre-Intake", margin, y);
-        y += 26;
-
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(10);
-        doc.setTextColor(94, 98, 91);
-        doc.text(`Submitted: ${new Date().toLocaleString()}`, margin, y);
-        y += 30;
-
-        section("Contact");
-        field("First name", "first_name");
-        field("Last name", "last_name");
-        field("Phone", "phone");
-        field("Email", "email");
-        field("Preferred contact", "preferred_contact");
-        field("Best time to reach", "best_time");
-
-        section("Housing Interest");
-        field("Room interest", "room_interest");
-        field("Preferred move-in timing", "move_in_timing");
-
-        const topics = formData.getAll("topics").join(", ");
-        ensureSpace(74);
-        y = writeWrappedLine(doc, "Topics to discuss", topics, margin, y, contentWidth);
-
-        section("General Notes");
-        field("Notes", "message");
-
-        section("Acknowledgement");
-        y = writeWrappedLine(
-          doc,
-          "Sensitive information acknowledgement",
-          getFormValue(formData, "sensitive_info_acknowledgement"),
-          margin,
-          y,
-          contentWidth,
-        );
-
-        const pageCount = doc.getNumberOfPages();
-        for (let page = 1; page <= pageCount; page += 1) {
-          doc.setPage(page);
-          doc.setFont("helvetica", "normal");
-          doc.setFontSize(9);
-          doc.setTextColor(94, 98, 91);
-          doc.text(`Page ${page} of ${pageCount}`, pageWidth - margin, pageHeight - 28, {
-            align: "right",
-          });
-        }
-
-        return doc.output("blob");
-      };
-
-      intakeForm.addEventListener("submit", (event) => {
-        if (intakeForm.dataset.pdfReady === "true") {
-          return;
-        }
-
-        event.preventDefault();
-        formStatus.textContent = "Preparing PDF...";
-
-        try {
-          const formData = new FormData(intakeForm);
-          const pdfBlob = buildPreIntakePdf(formData);
-          const safeName =
-            `${getFormValue(formData, "first_name")}-${getFormValue(formData, "last_name")}`
-              .toLowerCase()
-              .replace(/[^a-z0-9]+/g, "-")
-              .replace(/^-|-$/g, "") || "applicant";
-          const file = new File([pdfBlob], `lolita-house-pre-intake-${safeName}.pdf`, {
-            type: "application/pdf",
-          });
-          const transfer = new DataTransfer();
-          transfer.items.add(file);
-          pdfInput.files = transfer.files;
-
-          intakeForm.dataset.pdfReady = "true";
-          formStatus.textContent = "Opening email submission...";
-          window.setTimeout(() => intakeForm.requestSubmit(), 0);
-        } catch (error) {
-          formStatus.textContent =
-            "PDF could not be prepared. The form will still send the typed answers.";
-          intakeForm.dataset.pdfReady = "true";
-          window.setTimeout(() => intakeForm.requestSubmit(), 250);
-        }
-      });
     </script>
   </body>
 </html>

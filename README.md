@@ -15,8 +15,7 @@ Then visit `http://localhost:8080`.
 ## Before publishing
 
 - Replace the placeholder phone number and email in `index.html`.
-- Confirm the pre-intake form destination email and submit once after publishing to activate FormSubmit.
-- The pre-intake form creates a PDF attachment in the browser through jsPDF, then sends it through FormSubmit.
+- Confirm the Jotform intake link in `index.html` is current before publishing.
 - Add the exact mission statement if it differs from the draft copy.
 - Replace or expand the house rules highlights from the official house rules attachment.
 - Add real home photos to the Photos section when available.
